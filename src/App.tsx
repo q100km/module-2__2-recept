@@ -15,13 +15,17 @@ const App = () => {
 
   const [activeIndex, setActiveIndex] = useState<number>(0)
 
+  const onStepOne = activeIndex === 0
+
+  const lastStep = data.length - 1
+
   const handleClick = (targetIndex: number): void => {
     setActiveIndex(targetIndex)
   }
 
   const nextStep = (): void => {
     setActiveIndex(activeIndex + 1)
-    if (activeIndex === 6) setActiveIndex(0)
+    if (activeIndex === lastStep) setActiveIndex(0)
   }
 
   const backStep = (): void => {
@@ -30,8 +34,6 @@ const App = () => {
   }
 
   console.log(activeIndex)
-
-  const onStepOne = activeIndex === 0
 
   return (
     <div className={styles.container}>
@@ -70,7 +72,7 @@ const App = () => {
             </button>
 
             <button onClick={nextStep} className={styles.button}>
-              {activeIndex === 6 ? 'Начать Сначала' : 'Далее'}
+              {activeIndex === lastStep ? 'Начать Сначала' : 'Далее'}
             </button>
           </div>
         </div>
